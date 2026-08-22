@@ -1,40 +1,29 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { useAppDispatch } from '../hooks/redux';
 import { login } from '../store/slices/authSlice';
-import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../components/ui/form';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
-
-const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-type LoginFormValues = z.infer<typeof loginSchema>;
+import { Label } from '../components/ui/label';
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const form = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: { email: '', password: '' },
-  });
-
-  const onSubmit = async (data: LoginFormValues) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
+    
     // Simulate API call
     setTimeout(() => {
       // Mock logic: if email contains admin, make them admin
-      const role = data.email.includes('admin') ? 'admin' : 'customer';
+      const role = formData.email.includes('admin') ? 'admin' : 'customer';
       dispatch(login({
-        user: { id: 'user-1', email: data.email, role },
+        user: { id: 'user-1', email: formData.email, role },
         token: 'mock-jwt-token'
       }));
       setIsLoading(false);
@@ -43,59 +32,95 @@ export function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-[80vh]">
-      <Card className="w-full max-w-md shadow-xl border-primary/20">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold font-heading">Sign in</CardTitle>
-          <CardDescription>
-            Enter your email and password to access your account
-            (Hint: use 'admin@test.com' to get admin privileges)
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="m@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+    <div className="min-h-screen flex w-full bg-[#020403]">
+      
+      {/* Left Half: Image */}
+      <div className="hidden lg:block lg:w-1/2 relative bg-black">
+        <img 
+          src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=1600" 
+          alt="Luxury Car" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+        
+        <div className="absolute bottom-16 left-12 right-12">
+          <h1 className="text-5xl font-heading font-bold text-white leading-tight mb-4">
+            Welcome <br /> Back
+          </h1>
+          <p className="text-white/70 text-lg max-w-md">
+            Sign in to access your account and explore our premium vehicle fleet.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Half: Form */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 lg:p-12">
+        <div className="w-full max-w-md">
+          
+          <div className="mb-10">
+            <Link to="/" className="inline-flex items-center gap-2 text-[#f7f3e8]/60 hover:text-[#f7f3e8] transition-colors text-sm font-medium mb-6">
+              <ArrowLeft size={16} />
+              Return to Home
+            </Link>
+            <h2 className="text-3xl font-heading font-bold text-[#f7f3e8]">Sign In</h2>
+            <p className="text-[#f7f3e8]/60 mt-2">Enter your credentials to continue. <br/><span className="text-xs text-[#a78bfa]">(Hint: use 'admin@test.com' to test admin privileges)</span></p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-[#f7f3e8]">Email Address</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                required
+                className="bg-[#151515] border-white/10 text-white h-12 focus-visible:ring-[#51158c]"
+                placeholder="m@example.com"
+                value={formData.email}
+                onChange={e => setFormData({...formData, email: e.target.value})}
               />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "Sign In"}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-4 border-t pt-4">
-          <div className="text-sm text-center text-muted-foreground w-full">
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password" className="text-[#f7f3e8]">Password</Label>
+              <div className="relative">
+                <Input 
+                  id="password" 
+                  type={showPassword ? "text" : "password"} 
+                  required
+                  className="bg-[#151515] border-white/10 text-white h-12 pr-10 focus-visible:ring-[#51158c]"
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={e => setFormData({...formData, password: e.target.value})}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#f7f3e8]/40 hover:text-[#f7f3e8] transition-colors focus:outline-none"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full h-12 bg-[#f7f3e8] hover:bg-[#f7f3e8]/90 text-[#020403] font-heading font-bold rounded-lg transition-colors mt-4 text-lg disabled:opacity-50"
+            >
+              {isLoading ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-[#f7f3e8]/60 mt-8">
             Don't have an account?{' '}
-            <Link to="/register" className="text-primary hover:underline font-medium">
+            <Link to="/register" className="text-[#a78bfa] hover:text-[#f7f3e8] font-medium transition-colors">
               Register here
             </Link>
-          </div>
-        </CardFooter>
-      </Card>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
