@@ -1,4 +1,4 @@
-import { Vehicle } from '../types';
+import type { Vehicle } from '../types';
 
 // Mock initial data
 let mockVehicles: Vehicle[] = [

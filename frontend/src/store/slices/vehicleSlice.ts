@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Vehicle } from '../../types';
+import type { Vehicle } from '../../types';
 import { api } from '../../services/api';
 
 interface VehicleState {
