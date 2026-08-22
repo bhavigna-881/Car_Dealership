@@ -19,9 +19,9 @@ export function Navbar() {
   };
 
   return (
-    <div className="pt-4 px-4 fixed top-0 left-0 w-full z-50 flex justify-center">
+    <div className="fixed top-0 left-0 w-full z-50 flex justify-center bg-[#020403] border-b border-white/10">
       <NavigationMenu className="w-full max-w-none [&>div]:w-full">
-        <NavigationMenuList className="flex w-full items-center justify-between bg-[#020403] rounded-full border border-white/10 shadow-2xl px-8 h-[4.5rem]">
+        <NavigationMenuList className="flex w-full items-center justify-between px-8 h-[4.5rem]">
           
           {/* Logo */}
           <NavigationMenuItem>
