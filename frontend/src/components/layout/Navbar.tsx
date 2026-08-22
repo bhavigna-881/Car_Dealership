@@ -4,7 +4,6 @@ import { logout } from '../../store/slices/authSlice';
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "../ui/navigation-menu"
 

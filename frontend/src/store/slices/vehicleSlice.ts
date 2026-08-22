@@ -22,6 +22,22 @@ export const purchaseVehicle = createAsyncThunk('vehicles/purchaseVehicle', asyn
   return await api.purchaseVehicle(id);
 });
 
+export const addVehicle = createAsyncThunk('vehicles/addVehicle', async (vehicle: Omit<Vehicle, 'id'>) => {
+  return await api.addVehicle(vehicle);
+});
+
+export const updateVehicle = createAsyncThunk('vehicles/updateVehicle', async ({ id, data }: { id: string, data: Partial<Vehicle> }) => {
+  return await api.updateVehicle(id, data);
+});
+
+export const deleteVehicle = createAsyncThunk('vehicles/deleteVehicle', async (id: string) => {
+  return await api.deleteVehicle(id);
+});
+
+export const restockVehicle = createAsyncThunk('vehicles/restockVehicle', async ({ id, amount }: { id: string, amount?: number }) => {
+  return await api.restockVehicle(id, amount);
+});
+
 const vehicleSlice = createSlice({
   name: 'vehicles',
   initialState,
@@ -41,6 +57,24 @@ const vehicleSlice = createSlice({
         state.error = action.error.message || 'Failed to fetch vehicles';
       })
       .addCase(purchaseVehicle.fulfilled, (state, action) => {
+        const index = state.items.findIndex(v => v.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(addVehicle.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+      })
+      .addCase(updateVehicle.fulfilled, (state, action) => {
+        const index = state.items.findIndex(v => v.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(deleteVehicle.fulfilled, (state, action) => {
+        state.items = state.items.filter(v => v.id !== action.payload);
+      })
+      .addCase(restockVehicle.fulfilled, (state, action) => {
         const index = state.items.findIndex(v => v.id === action.payload.id);
         if (index !== -1) {
           state.items[index] = action.payload;
