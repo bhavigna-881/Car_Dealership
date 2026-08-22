@@ -39,25 +39,25 @@ export function Navbar() {
           {isAuthenticated ? (
             <>
               {user?.role === 'admin' && (
-                <Link to="/admin" className="text-brand-gray hover:text-white transition-colors text-[15px] font-medium hidden sm:block">
+                <Link to="/admin" className="text-brand-beige font-body hover:opacity-80 transition-opacity text-[15px] font-medium hidden sm:block">
                   Admin Dashboard
                 </Link>
               )}
               <button 
                 onClick={handleLogout}
-                className="flex items-center gap-1 text-white font-bold uppercase text-sm tracking-wider hover:text-white/80 transition-colors group"
+                className="flex items-center gap-1 text-brand-beige font-body font-bold uppercase text-sm tracking-wider hover:opacity-80 transition-opacity group"
               >
-                <span className="border-b border-white group-hover:border-white/80 pb-[2px]">Logout</span>
+                <span className="border-b border-brand-beige pb-[2px]">Logout</span>
                 <ArrowUpRight size={18} weight="bold" />
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="text-brand-gray hover:text-white transition-colors text-[15px] font-medium hidden sm:block">
+              <Link to="/login" className="text-brand-beige font-body hover:opacity-80 transition-opacity text-[15px] font-medium hidden sm:block">
                 Login
               </Link>
-              <Link to="/register" className="flex items-center gap-1 text-white font-bold uppercase text-sm tracking-wider hover:text-white/80 transition-colors group">
-                <span className="border-b border-white group-hover:border-white/80 pb-[2px]">Register</span>
+              <Link to="/register" className="flex items-center gap-1 text-brand-beige font-body font-bold uppercase text-sm tracking-wider hover:opacity-80 transition-opacity group">
+                <span className="border-b border-brand-beige pb-[2px]">Register</span>
                 <ArrowUpRight size={18} weight="bold" />
               </Link>
             </>
