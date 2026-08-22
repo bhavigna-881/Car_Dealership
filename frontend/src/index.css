@@ -18,14 +18,14 @@
     --color-red: 0.0 84.2% 60.2%; /* #ef4444 */
 
     /* Global Theme (Mapped to Shadcn Roles) */
-    --background: var(--brand-beige);
-    --foreground: var(--brand-black);
+    --background: var(--brand-black);
+    --foreground: var(--brand-beige);
 
-    --card: 0 0% 100%; /* Pure white for cards to stand out on beige */
-    --card-foreground: var(--brand-black);
+    --card: var(--brand-gray); 
+    --card-foreground: var(--brand-beige);
  
-    --popover: 0 0% 100%;
-    --popover-foreground: var(--brand-black);
+    --popover: var(--brand-gray);
+    --popover-foreground: var(--brand-beige);
  
     --primary: var(--brand-pop-purple);
     --primary-foreground: var(--brand-beige);
@@ -33,8 +33,8 @@
     --secondary: var(--brand-violet-light);
     --secondary-foreground: var(--brand-black);
  
-    --muted: 0 0% 90%;
-    --muted-foreground: var(--brand-gray);
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
  
     --accent: var(--brand-orange);
     --accent-foreground: var(--brand-black);

@@ -18,8 +18,7 @@ export function Navbar() {
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 text-primary">
-          <CarProfile size={32} weight="fill" />
-          <span className="text-xl font-bold font-heading">AutoInventory</span>
+          <span className="text-2xl font-bold font-heading">AutoInventory</span>
         </Link>
         <nav className="flex items-center gap-4">
           {isAuthenticated ? (
@@ -39,12 +38,12 @@ export function Navbar() {
           ) : (
             <>
               <Link to="/login">
-                <Button variant="ghost" className="gap-2">
+                <Button variant="glass" className="gap-2">
                   <SignIn size={20} /> Login
                 </Button>
               </Link>
               <Link to="/register">
-                <Button className="gap-2">
+                <Button variant="glass" className="gap-2">
                   <UserPlus size={20} /> Register
                 </Button>
               </Link>

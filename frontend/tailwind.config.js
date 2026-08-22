@@ -57,6 +57,10 @@ module.exports = {
           gray: "hsl(var(--brand-gray))",
         }
       },
+      fontFamily: {
+        heading: ['Geomini', 'Geist', 'sans-serif'],
+        body: ['Geist', 'sans-serif'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
