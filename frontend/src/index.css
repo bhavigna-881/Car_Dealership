@@ -6,70 +6,77 @@
 
 @layer base {
   :root {
-    /* 3-Color Dynamic Palette */
-    --color-primary: 221 83% 53%;   /* Vibrant Blue */
-    --color-secondary: 262 83% 58%; /* Electric Purple */
-    --color-accent: 187 82% 65%;    /* Cyan */
+    /* Brand Colors (User Requested) */
+    --brand-pop-purple: 270.3 73.9% 31.6%; /* #51158c */
+    --brand-violet-light: 255.1 91.7% 76.3%; /* #a78bfa */
+    --brand-orange: 15.8 100.0% 56.1%; /* #ff5a1f */
+    --brand-black: 150.0 33.3% 1.2%; /* #020403 */
+    --brand-beige: 44.0 48.4% 93.9%; /* #f7f3e8 */
+    --brand-gray: 0.0 0.0% 23.9%; /* #3d3d3d */
+    --color-green: 142.1 70.6% 45.3%; /* #22c55e */
+    --color-yellow: 45.4 93.4% 47.5%; /* #eab308 */
+    --color-red: 0.0 84.2% 60.2%; /* #ef4444 */
 
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Global Theme (Mapped to Shadcn Roles) */
+    --background: var(--brand-black);
+    --foreground: var(--brand-beige);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: var(--brand-gray); 
+    --card-foreground: var(--brand-beige);
  
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: var(--brand-gray);
+    --popover-foreground: var(--brand-beige);
  
-    --primary: var(--color-primary);
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--brand-pop-purple);
+    --primary-foreground: var(--brand-beige);
  
-    --secondary: var(--color-secondary);
-    --secondary-foreground: 210 40% 98%;
+    --secondary: var(--brand-violet-light);
+    --secondary-foreground: var(--brand-black);
  
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
  
-    --accent: var(--color-accent);
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--brand-orange);
+    --accent-foreground: var(--brand-black);
  
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: var(--color-red);
+    --destructive-foreground: var(--brand-beige);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: var(--color-primary);
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: var(--brand-pop-purple);
  
-    --radius: 0.75rem; /* Slightly softer corners for premium feel */
+    --radius: 0.5rem;
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: var(--brand-black);
+    --foreground: var(--brand-beige);
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: var(--brand-gray);
+    --card-foreground: var(--brand-beige);
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: var(--brand-gray);
+    --popover-foreground: var(--brand-beige);
  
-    --primary: var(--color-primary);
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--brand-pop-purple);
+    --primary-foreground: var(--brand-beige);
  
-    --secondary: var(--color-secondary);
-    --secondary-foreground: 210 40% 98%;
+    --secondary: var(--brand-violet-light);
+    --secondary-foreground: var(--brand-black);
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
  
-    --accent: var(--color-accent);
-    --accent-foreground: 210 40% 98%;
+    --accent: var(--brand-orange);
+    --accent-foreground: var(--brand-black);
  
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: var(--color-red);
+    --destructive-foreground: var(--brand-beige);
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: var(--color-primary);
+    --border: var(--brand-gray);
+    --input: var(--brand-gray);
+    --ring: var(--brand-pop-purple);
   }
 }
  
@@ -84,4 +91,15 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Geomini', 'Geist', sans-serif;
   }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

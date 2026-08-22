@@ -48,6 +48,18 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          pop: "hsl(var(--brand-pop-purple))",
+          violet: "hsl(var(--brand-violet-light))",
+          orange: "hsl(var(--brand-orange))",
+          black: "hsl(var(--brand-black))",
+          beige: "hsl(var(--brand-beige))",
+          gray: "hsl(var(--brand-gray))",
+        }
+      },
+      fontFamily: {
+        heading: ['Geomini', 'Geist', 'sans-serif'],
+        body: ['Geist', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
