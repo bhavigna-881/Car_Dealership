@@ -20,7 +20,7 @@ export function Navbar() {
 
   return (
     <div className="pt-4 px-4 w-full sticky top-0 z-50 flex justify-center">
-      <NavigationMenu className="w-full max-w-7xl">
+      <NavigationMenu className="w-full max-w-none">
         <NavigationMenuList className="flex w-full items-center justify-between bg-[#020403] rounded-full border border-white/10 shadow-2xl px-8 h-[4.5rem]">
           
           {/* Logo */}
