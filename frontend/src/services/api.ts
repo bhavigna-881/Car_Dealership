@@ -33,5 +33,30 @@ export const api = {
     
     vehicle.quantity += amount;
     return { ...vehicle };
+  },
+
+  addVehicle: async (vehicleData: Omit<Vehicle, 'id'>): Promise<Vehicle> => {
+    await delay(500);
+    const newVehicle = {
+      ...vehicleData,
+      id: Math.random().toString(36).substr(2, 9),
+    };
+    mockVehicles.push(newVehicle);
+    return { ...newVehicle };
+  },
+
+  updateVehicle: async (id: string, vehicleData: Partial<Vehicle>): Promise<Vehicle> => {
+    await delay(500);
+    const index = mockVehicles.findIndex(v => v.id === id);
+    if (index === -1) throw new Error('Vehicle not found');
+    
+    mockVehicles[index] = { ...mockVehicles[index], ...vehicleData };
+    return { ...mockVehicles[index] };
+  },
+
+  deleteVehicle: async (id: string): Promise<string> => {
+    await delay(500);
+    mockVehicles = mockVehicles.filter(v => v.id !== id);
+    return id;
   }
 };
