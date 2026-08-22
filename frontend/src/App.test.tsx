@@ -5,6 +5,6 @@ import App from './App';
 describe('App component', () => {
   it('renders correctly', () => {
     render(<App />);
-    expect(screen.getByText(/Car Dealership Inventory System/i)).toBeDefined();
+    expect(screen.getByText(/AutoInventory/i)).toBeDefined();
   });
 });
