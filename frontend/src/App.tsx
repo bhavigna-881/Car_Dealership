@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <div className="min-h-screen bg-background text-foreground flex flex-col">
           <Navbar />
-          <main className="container mx-auto p-4 md:p-6 flex-grow">
+          <main className="container mx-auto px-4 md:px-6 pt-[6.5rem] pb-8 flex-grow">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
