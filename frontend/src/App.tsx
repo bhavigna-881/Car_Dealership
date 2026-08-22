@@ -8,6 +8,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Admin } from './pages/Admin';
 import { cn } from './lib/utils';
+import { Toaster } from './components/ui/toaster';
 
 function AppContent() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function AppContent() {
           </Route>
         </Routes>
       </main>
+      <Toaster />
     </div>
   );
 }

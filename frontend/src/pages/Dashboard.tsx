@@ -6,6 +6,7 @@ import { Input } from '../components/ui/input';
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import { MarketingHero } from '../components/MarketingHero';
 import { cn } from '../lib/utils';
+import { useToast } from '../hooks/use-toast';
 
 const CATEGORIES = ['ALL', 'PREMIUM', 'COUPE', 'HYPERCAR', 'SUPERCAR', 'CABRIOLET', 'SUV'];
 
@@ -13,6 +14,7 @@ export function Dashboard() {
   const dispatch = useAppDispatch();
   const { items, loading, error } = useAppSelector((state) => state.vehicles);
   const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const { toast } = useToast();
   
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -24,10 +26,23 @@ export function Dashboard() {
 
   const handlePurchase = async (id: string) => {
     setPurchasingId(id);
+    const vehicle = items.find(v => v.id === id);
     try {
       await dispatch(purchaseVehicle(id)).unwrap();
+      if (vehicle) {
+        toast({
+          title: "Purchase Successful",
+          description: `Congratulations! You are the new owner of a ${vehicle.make} ${vehicle.model}.`,
+          className: "bg-[#151515] text-[#f7f3e8] border-[#51158c]",
+        });
+      }
     } catch (err) {
       console.error("Purchase failed", err);
+      toast({
+        variant: "destructive",
+        title: "Purchase Failed",
+        description: "Something went wrong while processing your request.",
+      });
     } finally {
       setPurchasingId(null);
     }
