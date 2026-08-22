@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 
@@ -14,6 +14,8 @@ export function Register() {
     confirmPassword: ''
   });
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const validateMobile = (mobile: string) => {
     // 10 without country code OR 12/13 with country code (e.g., +123456789012 or +12345678901)
@@ -125,33 +127,51 @@ export function Register() {
 
             <div className="space-y-2">
               <Label htmlFor="password" className="text-[#f7f3e8]">Password</Label>
-              <Input 
-                id="password" 
-                type="password" 
-                required
-                className="bg-[#151515] border-white/10 text-white h-12 focus-visible:ring-[#51158c]"
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={e => setFormData({...formData, password: e.target.value})}
-              />
+              <div className="relative">
+                <Input 
+                  id="password" 
+                  type={showPassword ? "text" : "password"} 
+                  required
+                  className="bg-[#151515] border-white/10 text-white h-12 pr-10 focus-visible:ring-[#51158c]"
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={e => setFormData({...formData, password: e.target.value})}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#f7f3e8]/40 hover:text-[#f7f3e8] transition-colors focus:outline-none"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="confirmPassword" className="text-[#f7f3e8]">Confirm Password</Label>
-              <Input 
-                id="confirmPassword" 
-                type="password" 
-                required
-                className="bg-[#151515] border-white/10 text-white h-12 focus-visible:ring-[#51158c]"
-                placeholder="••••••••"
-                value={formData.confirmPassword}
-                onChange={e => setFormData({...formData, confirmPassword: e.target.value})}
-              />
+              <div className="relative">
+                <Input 
+                  id="confirmPassword" 
+                  type={showConfirmPassword ? "text" : "password"} 
+                  required
+                  className="bg-[#151515] border-white/10 text-white h-12 pr-10 focus-visible:ring-[#51158c]"
+                  placeholder="••••••••"
+                  value={formData.confirmPassword}
+                  onChange={e => setFormData({...formData, confirmPassword: e.target.value})}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#f7f3e8]/40 hover:text-[#f7f3e8] transition-colors focus:outline-none"
+                >
+                  {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
 
             <button 
               type="submit" 
-              className="w-full h-12 bg-[#51158c] hover:bg-[#51158c]/90 text-white font-medium rounded-lg transition-colors mt-4"
+              className="w-full h-12 bg-[#f7f3e8] hover:bg-[#f7f3e8]/90 text-[#020403] font-heading font-bold rounded-lg transition-colors mt-4 text-lg"
             >
               Sign Up
             </button>
