@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import vehicleReducer, { fetchVehicles, purchaseVehicle, addVehicle, updateVehicle, deleteVehicle, restockVehicle } from './vehicleSlice';
-import { Vehicle } from '../../types';
+import type { Vehicle } from '../../types';
 
 describe('vehicleSlice', () => {
   const initialState = {

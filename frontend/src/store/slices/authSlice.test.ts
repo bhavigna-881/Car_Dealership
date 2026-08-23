@@ -13,7 +13,7 @@ describe('authSlice', () => {
   });
 
   it('should handle login', () => {
-    const mockUser = { id: '1', email: 'test@test.com', role: 'customer' as const };
+    const mockUser = { id: '1', name: 'Test User', email: 'test@test.com', mobile: '1234567890', role: 'customer' as const };
     const action = login({ user: mockUser, token: 'mock-token' });
     const state = authReducer(initialState, action);
     
@@ -24,7 +24,7 @@ describe('authSlice', () => {
 
   it('should handle logout', () => {
     const loggedInState = {
-      user: { id: '1', email: 'test@test.com', role: 'customer' as const },
+      user: { id: '1', name: 'Test User', email: 'test@test.com', mobile: '1234567890', role: 'customer' as const },
       isAuthenticated: true,
       token: 'mock-token',
     };

@@ -10,15 +10,24 @@ interface VehicleCardProps {
   isPurchasing: boolean;
 }
 
-const getImageForMake = (make: string) => {
-  const m = make.toLowerCase();
-  if (m.includes('toyota')) return 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?q=80&w=800';
-  if (m.includes('honda')) return 'https://images.unsplash.com/photo-1606664515524-ed2f786a0b18?q=80&w=800';
-  if (m.includes('ford')) return 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=800';
-  if (m.includes('tesla')) return 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=800';
-  if (m.includes('lamborghini')) return 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=800';
-  if (m.includes('mclaren')) return 'https://images.unsplash.com/photo-1620882814836-98a4497a151b?q=80&w=800';
-  if (m.includes('mercedes')) return 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800';
+const getImageForVehicle = (make: string, model: string) => {
+  const mk = make.toLowerCase();
+  const md = model.toLowerCase().replace(/[\s-_]/g, '');
+
+  if (mk.includes('honda') && md.includes('brv')) {
+    return 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800'; // Red Crossover SUV
+  }
+  if (mk.includes('honda') && md.includes('crv')) {
+    return 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=800'; // White Honda CR-V SUV
+  }
+
+  if (mk.includes('toyota')) return 'https://images.unsplash.com/photo-1623869675781-80aa31012a5a?q=80&w=800';
+  if (mk.includes('honda')) return 'https://images.unsplash.com/photo-1606664515524-ed2f786a0b18?q=80&w=800';
+  if (mk.includes('ford')) return 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=800';
+  if (mk.includes('tesla')) return 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=800';
+  if (mk.includes('lamborghini')) return 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=800';
+  if (mk.includes('mclaren')) return 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800';
+  if (mk.includes('mercedes')) return 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800';
   return 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=800';
 };
 
@@ -31,7 +40,7 @@ export function VehicleCard({ vehicle, onPurchase, isPurchasing }: VehicleCardPr
       {/* Top 2/3: Image Layout */}
       <div className="relative h-2/3 w-full overflow-hidden">
         <img 
-          src={getImageForMake(vehicle.make)} 
+          src={getImageForVehicle(vehicle.make, vehicle.model)} 
           alt={`${vehicle.make} ${vehicle.model}`}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
