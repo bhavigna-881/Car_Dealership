@@ -99,19 +99,19 @@ npm test
 Here are screenshots of the user and admin frontends in action:
 
 ### 1. Landing Page (Marketing Hero)
-![Landing Page](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787478892636.png)
+![Landing Page](./screenshots/landing_page.png)
 
 ### 2. Sign In Page
-![Sign In Page](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479376033.png)
+![Sign In Page](./screenshots/login.png)
 
 ### 3. Vehicle Fleet Dashboard
-![Vehicle Fleet Dashboard](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787478912753.png)
+![Vehicle Fleet Dashboard](./screenshots/dashboard.png)
 
 ### 4. Logged-in Admin Fleet View
-![Logged-in Admin Fleet View](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479282183.png)
+![Logged-in Admin Fleet View](./screenshots/admin_fleet.png)
 
 ### 5. Admin Dashboard (Inventory Management)
-![Admin Dashboard](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479298651.png)
+![Admin Dashboard](./screenshots/admin_dashboard.png)
 
 ## My AI Usage
 
