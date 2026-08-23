@@ -133,3 +133,4 @@ As per the Kata requirements, AI was used extensively throughout this project.
 - [x] Screenshots of the UI
 - [x] `PROMPTS.md` containing raw chat logs
 - [x] Test Report (`test-report.txt`)
+- [x] **Live Deployed Application (Brownie Points):** [Car Dealership Catalog App (Vercel)](https://car-dealership-omega-five.vercel.app/)
