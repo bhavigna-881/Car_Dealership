@@ -94,11 +94,30 @@ cd frontend
 npm test
 ```
 
+## Application Screenshots
+
+Here are screenshots of the user and admin frontends in action:
+
+### 1. Landing Page (Marketing Hero)
+![Landing Page](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787478892636.png)
+
+### 2. Sign In Page
+![Sign In Page](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479376033.png)
+
+### 3. Vehicle Fleet Dashboard
+![Vehicle Fleet Dashboard](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787478912753.png)
+
+### 4. Logged-in Admin Fleet View
+![Logged-in Admin Fleet View](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479282183.png)
+
+### 5. Admin Dashboard (Inventory Management)
+![Admin Dashboard](file:///C:/Users/Bhavigna/.gemini/antigravity-ide/brain/02d4d28b-5b52-4734-bb97-bb7e2c5e330b/.user_uploaded/media_1787479298651.png)
+
 ## My AI Usage
 
 As per the Kata requirements, AI was used extensively throughout this project.
 
-- **Tools Used:** Antigravity (Gemini 3.1 Pro)
+- **Tools Used:** Antigravity (Gemini 3.5 Flash)
 - **How it was used:**
   - I used the AI to brainstorm the initial architecture and technical stack (FastAPI vs Express).
   - The AI scaffolded the Vite project, configured Tailwind CSS, and resolved a complex compatibility issue between ShadCN and Tailwind v4 by downgrading to v3.
@@ -111,6 +130,6 @@ As per the Kata requirements, AI was used extensively throughout this project.
 ## Deliverables
 - [x] Public Git Repository
 - [x] Comprehensive README
-- [ ] Screenshots (Please add your screenshots of the UI!)
+- [x] Screenshots of the UI
 - [x] `PROMPTS.md` containing raw chat logs
 - [x] Test Report (`test-report.txt`)
