@@ -13,5 +13,11 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
+    pool: 'threads',
+    poolOptions: {
+      threads: {
+        singleThread: true,
+      },
+    },
   },
 })
