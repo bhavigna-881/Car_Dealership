@@ -1,6 +1,10 @@
 import { CarProfile } from '@phosphor-icons/react';
 
-export function MarketingHero() {
+interface MarketingHeroProps {
+  onBookNow?: () => void;
+}
+
+export function MarketingHero({ onBookNow }: MarketingHeroProps) {
   return (
     <div className="mb-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -33,7 +37,7 @@ export function MarketingHero() {
             {/* McLaren Card */}
             <div className="relative rounded-3xl overflow-hidden group">
               <img 
-                src="https://images.unsplash.com/photo-1620882814836-98a4497a151b?q=80&w=800" 
+                src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800" 
                 alt="McLaren" 
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               />
@@ -82,7 +86,10 @@ export function MarketingHero() {
           our unmatched service.
         </p>
         <div className="w-full md:w-auto flex justify-end">
-          <button className="w-full md:w-auto bg-white text-black font-bold uppercase text-sm tracking-wider px-10 py-4 rounded-full hover:bg-brand-beige transition-colors">
+          <button 
+            onClick={onBookNow}
+            className="w-full md:w-auto bg-white text-black font-bold uppercase text-sm tracking-wider px-10 py-4 rounded-full hover:bg-brand-beige transition-colors"
+          >
             BOOK NOW
           </button>
         </div>

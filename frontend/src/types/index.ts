@@ -9,6 +9,8 @@ export interface Vehicle {
 
 export interface User {
   id: string;
+  name: string;
   email: string;
+  mobile: string;
   role: 'customer' | 'admin';
 }
