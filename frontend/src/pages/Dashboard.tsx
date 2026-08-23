@@ -19,6 +19,8 @@ export function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [purchasingId, setPurchasingId] = useState<string | null>(null);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
 
   useEffect(() => {
     dispatch(fetchVehicles());
@@ -53,7 +55,15 @@ export function Dashboard() {
                           v.model.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = activeCategory === 'ALL' || v.category.toUpperCase() === activeCategory;
     
-    return matchesSearch && matchesCategory;
+    let matchesPrice = true;
+    if (minPrice !== '') {
+      matchesPrice = matchesPrice && v.price >= Number(minPrice);
+    }
+    if (maxPrice !== '') {
+      matchesPrice = matchesPrice && v.price <= Number(maxPrice);
+    }
+    
+    return matchesSearch && matchesCategory && matchesPrice;
   });
 
   return (
@@ -71,7 +81,7 @@ export function Dashboard() {
         </div>
 
         {/* Filters Row */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map(cat => (
               <button
@@ -89,14 +99,32 @@ export function Dashboard() {
             ))}
           </div>
 
-          <div className="relative w-full md:w-72 shrink-0">
-            <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
-            <Input 
-              placeholder="Search make or model..." 
-              className="pl-10 bg-black/40 border-white/10"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+          <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+            <div className="flex gap-2">
+              <Input 
+                type="number"
+                placeholder="Min $" 
+                className="w-24 bg-black/40 border-white/10"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+              />
+              <Input 
+                type="number"
+                placeholder="Max $" 
+                className="w-24 bg-black/40 border-white/10"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full sm:w-64 shrink-0">
+              <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+              <Input 
+                placeholder="Search make or model..." 
+                className="pl-10 bg-black/40 border-white/10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
           </div>
         </div>
 
