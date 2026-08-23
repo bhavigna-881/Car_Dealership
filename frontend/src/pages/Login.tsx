@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { useAppDispatch } from '../hooks/redux';
 import { login } from '../store/slices/authSlice';
+import { api } from '../services/api';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 
@@ -18,17 +19,18 @@ export function Login() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      // Mock logic: if email contains admin, make them admin
-      const role = formData.email.includes('admin') ? 'admin' : 'customer';
+    try {
+      const response = await api.login({ email: formData.email, password: formData.password });
       dispatch(login({
-        user: { id: 'user-1', email: formData.email, role },
-        token: 'mock-jwt-token'
+        user: response.user,
+        token: response.token
       }));
-      setIsLoading(false);
       navigate('/');
-    }, 1000);
+    } catch (error: any) {
+      alert(error.message || 'Failed to login');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

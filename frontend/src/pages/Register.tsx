@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
+import { api } from '../services/api';
 
 export function Register() {
   const navigate = useNavigate();
@@ -37,9 +38,18 @@ export function Register() {
       return;
     }
 
-    // TODO: Call API
-    console.log('Registration submitted:', formData);
-    navigate('/login');
+    try {
+      await api.register({
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.mobile,
+        password: formData.password
+      });
+      // Automatically navigate to login on success
+      navigate('/login');
+    } catch (err: any) {
+      setError(err.message || 'Failed to register');
+    }
   };
 
   return (
